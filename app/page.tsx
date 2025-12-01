@@ -1,103 +1,161 @@
-import Image from "next/image";
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { BookOpen, Search, Users, ArrowRight, CheckCircle } from "lucide-react"
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-background">
+      {/* Navigation */}
+      <header className="border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="container mx-auto flex h-16 items-center justify-between px-4">
+          <div className="flex items-center gap-2">
+            <BookOpen className="h-6 w-6 text-primary" />
+            <span className="text-xl font-bold">LibraryHub</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <Link href="/login">
+              <Button variant="ghost">Sign In</Button>
+            </Link>
+            <Link href="/signup">
+              <Button>Get Started</Button>
+            </Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </header>
+
+      {/* Hero Section */}
+      <section className="container mx-auto px-4 py-24 text-center">
+        <div className="mx-auto max-w-3xl space-y-6">
+          <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
+            Your Modern Library Solution
+          </div>
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-balance">
+            Manage Your Library
+            <span className="text-primary"> Effortlessly</span>
+          </h1>
+          <p className="mx-auto max-w-2xl text-lg text-muted-foreground text-pretty">
+            A comprehensive library management system that makes browsing, borrowing, and managing books a breeze.
+            Perfect for libraries of any size.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="/signup">
+              <Button size="lg" className="h-12 px-8">
+                Start Free Trial
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+            <Link href="/login">
+              <Button size="lg" variant="outline" className="h-12 px-8 bg-transparent">
+                Sign In
+              </Button>
+            </Link>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            Demo credentials: admin@library.com or member@library.com (any password)
+          </p>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="border-t border-border/50 bg-muted/30 py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold">Everything You Need</h2>
+            <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
+              Powerful features to manage your entire library workflow
+            </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-3">
+            <div className="rounded-2xl border border-border/50 bg-card p-8 text-center">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
+                <BookOpen className="h-7 w-7 text-primary" />
+              </div>
+              <h3 className="mt-6 text-xl font-semibold">Book Management</h3>
+              <p className="mt-3 text-muted-foreground">
+                Add, edit, and delete books with ease. Track copies and availability in real-time.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-border/50 bg-card p-8 text-center">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
+                <Search className="h-7 w-7 text-primary" />
+              </div>
+              <h3 className="mt-6 text-xl font-semibold">Smart Search</h3>
+              <p className="mt-3 text-muted-foreground">
+                Find books instantly by title, author, category, or ISBN with our powerful search.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-border/50 bg-card p-8 text-center">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
+                <Users className="h-7 w-7 text-primary" />
+              </div>
+              <h3 className="mt-6 text-xl font-semibold">Borrow & Return</h3>
+              <p className="mt-3 text-muted-foreground">
+                Seamless borrowing and returning process with due date tracking and reminders.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-24">
+        <div className="container mx-auto px-4">
+          <div className="grid gap-12 lg:grid-cols-2 items-center">
+            <div className="space-y-6">
+              <h2 className="text-3xl font-bold">Why Choose LibraryHub?</h2>
+              <p className="text-muted-foreground text-lg">
+                Built with modern technology and designed for ease of use, LibraryHub streamlines every aspect of
+                library management.
+              </p>
+              <ul className="space-y-4">
+                {[
+                  "Real-time inventory tracking",
+                  "Role-based access control",
+                  "Easy borrowing and returns",
+                  "Comprehensive search functionality",
+                  "Beautiful, intuitive interface",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3">
+                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="relative aspect-square rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 p-8 flex items-center justify-center">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="rounded-xl bg-card p-6 shadow-lg border border-border/50">
+                  <p className="text-4xl font-bold text-primary">500+</p>
+                  <p className="text-sm text-muted-foreground mt-1">Books Managed</p>
+                </div>
+                <div className="rounded-xl bg-card p-6 shadow-lg border border-border/50">
+                  <p className="text-4xl font-bold text-primary">100+</p>
+                  <p className="text-sm text-muted-foreground mt-1">Active Members</p>
+                </div>
+                <div className="rounded-xl bg-card p-6 shadow-lg border border-border/50">
+                  <p className="text-4xl font-bold text-primary">99%</p>
+                  <p className="text-sm text-muted-foreground mt-1">Satisfaction Rate</p>
+                </div>
+                <div className="rounded-xl bg-card p-6 shadow-lg border border-border/50">
+                  <p className="text-4xl font-bold text-primary">24/7</p>
+                  <p className="text-sm text-muted-foreground mt-1">Access Available</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-border/50 py-12 bg-muted/30">
+        <div className="container mx-auto px-4 text-center">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <BookOpen className="h-5 w-5 text-primary" />
+            <span className="font-semibold">LibraryHub</span>
+          </div>
+          <p className="text-sm text-muted-foreground">© 2025 LibraryHub. All rights reserved.</p>
+        </div>
       </footer>
     </div>
-  );
+  )
 }
